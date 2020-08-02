@@ -1,0 +1,11 @@
+{
+  "opts": {
+    "template": "node_modules/better-docs"
+  },
+  "tags": {
+    "allowUnknownTags": ["category", "subcategory"]
+  },
+  "plugins": [
+    "node_modules/better-docs/category"
+  ]
+}

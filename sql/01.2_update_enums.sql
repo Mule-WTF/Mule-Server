@@ -1,0 +1,2 @@
+ALTER TYPE NETWORK RENAME VALUE 'maticv3' TO 'matic-mumbai';
+ALTER TYPE NETWORK ADD VALUE 'matic' AFTER 'kovan';

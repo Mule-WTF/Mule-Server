@@ -1,0 +1,20 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Env
+.env
+
+# Dependency directories
+node_modules/
+package-lock.json
+sql/Utils/update_tokens/token_list
+
+# docs
+docs
