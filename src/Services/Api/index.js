@@ -19,7 +19,6 @@ const api           = require('./Handler/apiHandler.js');
 const portal        = require('./Handler/portalHandler.js');
 const resp          = require('./Utils/response.js');
 
-const isPrime = require('./primetest.js');
 
 /* Mule Controller */
 const MuleController    = require('../../Classes/MuleController/MuleController.js');
