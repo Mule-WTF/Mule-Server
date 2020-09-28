@@ -48,7 +48,7 @@ const accountLimiter = RateLimit({
 });
 
 /* CORS */
-const whitelist = ['https://www.lab.mule.wtf', 'https://lab.mule.wtf', 'https://www.lab-api.mule.wtf', 'https://lab-api.mule.wtf', 'https://www.mule.wtf', 'https://mule.wtf', 'https://www.api.mule.wtf', 'https://api.mule.wtf']
+const whitelist = ['https://mule.cataws.duckdns.org','https://www.lab.mule.wtf', 'https://lab.mule.wtf', 'https://www.lab-api.mule.wtf', 'https://lab-api.mule.wtf', 'https://www.mule.wtf', 'https://mule.wtf', 'https://www.api.mule.wtf', 'https://api.mule.wtf']
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -89,6 +89,15 @@ if (cluster.isMaster && cfg.PRODUCTION == 1) {
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: false }));
 
+  /* Trim URL Middleware to final /string */
+  server.use( (req,res,next)=> {
+    let endpoint = req.url.split("/api/v1");
+    endpoint = endpoint[endpoint.length-1];
+    console.log(`Trimming req url from ${req.url} => ${endpoint}`);
+    req.url = endpoint;
+    next();
+  });
+
   /* Public Api */
   for (let endpoint in api) {
     if (api.hasOwnProperty(endpoint)) {
@@ -117,6 +126,14 @@ if (cluster.isMaster && cfg.PRODUCTION == 1) {
       server.post('/' + endpoint, [muleMiddleware, portal[endpoint]]);
     }
   }
+
+  server.get('*', (req, res) => {
+	res.send("Invalid GET Endpoint : API OTHERWISE - OK");
+  });
+
+  server.post('*', (req,res) => {
+	res.send("Invalid POST Endpoint : API OTHERWISE - OK");
+  });
 
   /* Start Server */
   server.listen(cfg.PORT, () => console.log(`Api Ready! Port: ${cfg.PORT}!`));
