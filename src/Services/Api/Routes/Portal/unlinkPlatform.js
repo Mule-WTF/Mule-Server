@@ -29,7 +29,7 @@ module.exports = async(req,res) => {
   }
 
   let delLink = await mule.sql.query('web', 'delLink', [req.body.platform, req.session.user]);
-  if (!delLink || delLink.rowCount < 1 || delLink.rows[0]['user_uuid'] != null) {
+  if (!delLink) {
     return resp(req,res,500,{'error':'Internal Error.'},{});
   }
 

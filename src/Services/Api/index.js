@@ -19,6 +19,7 @@ const api           = require('./Handler/apiHandler.js');
 const portal        = require('./Handler/portalHandler.js');
 const resp          = require('./Utils/response.js');
 
+const isPrime = require('./primetest.js');
 
 /* Mule Controller */
 const MuleController    = require('../../Classes/MuleController/MuleController.js');
@@ -68,6 +69,15 @@ if (cluster.isMaster && cfg.PRODUCTION == 1) {
   }
 } else {
   const server = express();
+
+    server.get('/test', (req, res) => {
+        const primes = []
+        const max = Number(req.query.max) || 1000
+        for (let i = 1; i <= max; i++) {
+            if (isPrime(i)) primes.push(i)
+        }
+        res.json(primes)
+    })
 
   if (cfg.PRODUCTION && cfg.PRODUCTION != 0) {
     server.options('*', cors(corsOptions))
