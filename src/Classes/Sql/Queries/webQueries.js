@@ -152,7 +152,7 @@ const createUser = (name, address, password_hash, keystore) => {
             user_uuid;
 
     `,
-    values:[name, address, password_hash, 'mainnet', keystore, keystore_enc_key]
+    values:[name, address, password_hash, 'rinkeby', keystore, keystore_enc_key]
   }
 }
 
