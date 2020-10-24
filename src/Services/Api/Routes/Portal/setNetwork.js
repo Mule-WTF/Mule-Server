@@ -18,7 +18,9 @@ module.exports = async(req,res) => {
     return resp(req,res,400,{'error': 'Invalid network.'},{});
   }
 
-  let setNetwork = await mule.sql.query('web', 'setNetwork', [req.session.user, req.body.network]);
+  console.warn("FORCING RINKEBY NETWORK ON DEV")
+
+  let setNetwork = await mule.sql.query('web', 'setNetwork', [req.session.user, "rinkeby"]);
   if (!setNetwork || setNetwork.rowCount < 1) {
     return resp(req,res,400,{'error': 'Could not set network.'},{});
   }
