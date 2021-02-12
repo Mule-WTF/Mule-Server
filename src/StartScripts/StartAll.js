@@ -5,7 +5,7 @@ try {
   console.log(ex)
 }
 try {
-  require('../Services/Telegram/index.js')
+ // require('../Services/Telegram/index.js')
 } catch(ex) {
   console.log('FAIL: Telegram did not start');
   console.log(ex)

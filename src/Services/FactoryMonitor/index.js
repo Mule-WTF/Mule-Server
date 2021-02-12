@@ -20,10 +20,13 @@ async function monitor() {
   let rinkebyFactory = new rinkebyWSS.eth.Contract(abi, cfg.RINKEBY_MULE_FACTORY);
   let rinkebyMonitor = new Monitor('rinkeby', rinkebyFactory);
 
+	/*
   let kovanWSS = mule.web3.wss.kovan;
   let kovanFactory = new kovanWSS.eth.Contract(abi, cfg.KOVAN_MULE_FACTORY);
   let kovanMonitor = new Monitor('kovan', kovanFactory);
-/*
+	*/
+
+	/*
   let maticWSS = mule.web3.wss.matic;
   let maticFactory = new maticWSS.eth.Contract(abi, cfg.MATIC_MULE_FACTORY);
   let maticMonitor = new Monitor('matic', maticFactory);

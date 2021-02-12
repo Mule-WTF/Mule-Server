@@ -94,7 +94,7 @@ class DiscordMessageHandler {
    */
 
   embed(key, route, title, description) {
-    let link = this.cfg.CLIENT_URL + '/' + route + (key ? '/'+ key : '');
+    let link = this.cfg.CLIENT_URL + '/' + route // + (key ? '/'+ key : '');
     let embed = {
         "title": title,
         "description": description,
